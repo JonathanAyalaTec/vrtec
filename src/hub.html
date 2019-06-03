@@ -86,7 +86,16 @@
             <img id="video-pause" crossorigin="anonymous" src="./assets/video-overlay/pause.png">
             <img id="video-pause-hover" crossorigin="anonymous" src="./assets/video-overlay/pause-hover.png">
 
-            <a-asset-item id="botdefault" response-type="arraybuffer" src="https://asset-bundles-prod.reticulum.io/bots/BotDefault_Avatar-9f71f8ff22.gltf"></a-asset-item>
+            <a-asset-item id="bot1" response-type="arraybuffer" src="/src/assets/avatars/AvH_V1.glb"></a-asset-item>
+            <a-asset-item id="bot2" response-type="arraybuffer" src="/src/assets/avatars/AvH_V1_Color2.glb"></a-asset-item>
+            <a-asset-item id="bot3" response-type="arraybuffer" src="/src/assets/avatars/AvM_V1.glb"></a-asset-item>
+            <a-asset-item id="bot4" response-type="arraybuffer" src="/src/assets/avatars/AvM_V1_Color2.glb"></a-asset-item>
+            <a-asset-item id="bot5" response-type="arraybuffer" src="/src/assets/avatars/AvM_V1_Color3.glb"></a-asset-item>
+            <a-asset-item id="bot6" response-type="arraybuffer" src="/src/assets/avatars/AvM_V2.glb"></a-asset-item>
+
+            <a-asset-item id="accessory" src="/src/assets/avatars/accessories/bow.glb"></a-asset-item>
+
+            <!-- <a-asset-item id="botdefault" response-type="arraybuffer" src="https://asset-bundles-prod.reticulum.io/bots/BotDefault_Avatar-9f71f8ff22.gltf"></a-asset-item>
             <a-asset-item id="botbobo" response-type="arraybuffer" src="https://asset-bundles-prod.reticulum.io/bots/BotBobo_Avatar-f9740a010b.gltf"></a-asset-item>
             <a-asset-item id="botdom" response-type="arraybuffer" src="https://asset-bundles-prod.reticulum.io/bots/BotDom_Avatar-0c48bf15a5.gltf"></a-asset-item>
             <a-asset-item id="botgreg" response-type="arraybuffer" src="https://asset-bundles-prod.reticulum.io/bots/BotGreg_Avatar-98d39797bb.gltf"></a-asset-item>
@@ -95,7 +104,7 @@
             <a-asset-item id="botkev" response-type="arraybuffer" src="https://asset-bundles-prod.reticulum.io/bots/BotKev_Avatar-a95787bb51.gltf"></a-asset-item>
             <a-asset-item id="botpinky" response-type="arraybuffer" src="https://asset-bundles-prod.reticulum.io/bots/BotPinky_Avatar-b0b93f8675.gltf"></a-asset-item>
             <a-asset-item id="botrobert" response-type="arraybuffer" src="https://asset-bundles-prod.reticulum.io/bots/BotRobert_Avatar-e9554880f3.gltf"></a-asset-item>
-            <a-asset-item id="botwoody" response-type="arraybuffer" src="https://asset-bundles-prod.reticulum.io/bots/BotWoody_Avatar-0140485a23.gltf"></a-asset-item>
+            <a-asset-item id="botwoody" response-type="arraybuffer" src="https://asset-bundles-prod.reticulum.io/bots/BotWoody_Avatar-0140485a23.gltf"></a-asset-item> -->
 
             <template id="remote-avatar-template">
                 <a-entity networked-avatar ik-root player-info matrix-auto-update>
@@ -120,6 +129,7 @@
                                     position="0 1 0"
                                     scale="6 6 6"
                                 ></a-entity>
+                                <a-entity class="model" matrix-auto-update id="modelaccessory" gltf-model="#accessory" position="0 -0.05 0.1" scale="1 1 1" rotation="1 1 1"></a-entity>
                             </a-entity>
                         </template>
 
@@ -180,6 +190,7 @@
                             <a-entity personal-space-invader="radius: 0.1" bone-visibility></a-entity>
                         </template>
                     </a-entity>
+                    
                 </a-entity>
             </template>
 
@@ -598,6 +609,7 @@
             ik-root
             player-info
         >
+
             <a-entity
                 id="player-hud"
                 hud-controller="head: #player-camera;"
@@ -605,6 +617,7 @@
                 vr-mode-toggle-visibility
                 vr-mode-toggle-playing__hud-controller
             >
+
                 <a-entity visibility-while-frozen="requireHoverOnNonMobile: false;" rotation="30 0 0">
                     <a-entity class="ui interactable-ui">
                         <a-entity class="leave-btn" position="0 -0.2 0" scale="0.7 0.7 0.7" leave-room-button is-remote-hover-target tags="singleActionButton: true;">
@@ -664,6 +677,7 @@
                     <a-entity text="value: ; align:center;" position="0.15 0.04 0.001" matrix-auto-update="target: text"></a-entity>
                 </a-rounded>
                 </a-entity>
+
             </a-entity>
 
             <a-entity
@@ -677,11 +691,13 @@
                 matrix-auto-update
                 set-active-camera
             >
+
                 <a-entity
                     id="gaze-teleport"
                     position = "0.15 0 0"
                     teleporter="start: /actions/startTeleport; confirm: /actions/stopTeleport; collisionEntities: [nav-mesh];"
                 ></a-entity>
+
             </a-entity>
 
             <a-entity
@@ -725,6 +741,7 @@
                 <template data-name="Neck">
                     <a-entity>
                         <a-entity class="nametag" visible="false" text ></a-entity>
+                        <a-entity class="model" id="modelaccessory" gltf-model="#accessory" position="0 -0.05 0.1" scale="1 1 1" rotation="1 1 1"></a-entity>
                     </a-entity>
                 </template>
 
